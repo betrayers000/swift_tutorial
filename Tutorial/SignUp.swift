@@ -9,13 +9,35 @@
 import SwiftUI
 
 struct SignUp: View {
+    
+    // load Todo dummy data
+    let todos = Todo.all()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            List(self.todos, id:\.title){Todo in
+                NavigationLink(destination: Text(Todo.title)){
+                    TodoCell(Todo: Todo)
+                }
+            }
+        }.navigationBarTitle("TodoList!")
     }
 }
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
         SignUp()
+    }
+}
+
+struct TodoCell:View {
+    let Todo: Todo
+    var body: some View{
+        HStack{
+            VStack{
+                Text(Todo.title).font(.largeTitle)
+                Text(Todo.content)
+            }
+        }
     }
 }

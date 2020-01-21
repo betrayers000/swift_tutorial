@@ -36,11 +36,12 @@ struct ContentView: View {
                         .keyboardType(.numberPad)
                 }
                 Section{
-                    Button("SignUp"){
-                        
+                    // push SingUp view but bug.... 
+                    NavigationLink(destination: SignUp()){
+                        Text("signup")
                     }
                 }
-            }.navigationBarTitle("This is Title")
+            }.navigationBarTitle("Todo")
         }
     }
 }
